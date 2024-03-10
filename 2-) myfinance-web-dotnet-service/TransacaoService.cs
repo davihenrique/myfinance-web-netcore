@@ -34,7 +34,7 @@ public class TransacaoService : ITransacaoService
     }
 
     public List<Transacao> ListarRegistros() =>
-        _dbContext.Transacao.ToList();
+        _dbContext.Transacao.Include(x => x.PlanoConta).ToList();
 
     public Transacao RetornarRegistro(int Id) =>
         _dbContext.Transacao.First(p => p.Id == Id);
